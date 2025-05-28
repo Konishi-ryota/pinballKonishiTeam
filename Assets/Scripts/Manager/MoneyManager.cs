@@ -22,8 +22,9 @@ public class MoneyManager : MonoBehaviour
     //MoneyTextの更新をするメソッド
     private void SetMoneyText()
     {
-        string format = _money == 0 ?  "0" : _money.ToString("0,#");
-        _moneyText.text = format;
+        //string format = _money == 0 ?  "0" : _money.ToString("0,#");
+        string st = _money.ToString();
+        _moneyText.text = st;
     }
 
     /// <summary>
@@ -42,11 +43,21 @@ public class MoneyManager : MonoBehaviour
     /// <param name="money">減らす量</param>
     public void DecreaseMoney(int money)
     {
+        Debug.Log("DecreaseMoney Invoke");
         _money -= money;
         if (_money < 0)
         {
             _money = 0;
         }
+        SetMoneyText();
+    }
+    /// <summary>
+    /// お金の掛け算の処理
+    /// </summary>
+    /// <param name="money"></param>
+    public void MultiplicationMoney(float money)
+    {
+        _money = Mathf.FloorToInt(_money * money);
         SetMoneyText();
     }
 }
