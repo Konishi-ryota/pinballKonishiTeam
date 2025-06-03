@@ -6,7 +6,7 @@ public class ReflectionBankroll : BankrollBase
 {
 	[Header("ピン前方向(Z)を軸に±{_angleRange}°を上範囲：初期30°")]
 	[SerializeField] float _angleUprRange = 30f;
-	//上範囲の角度を下角度に流用
+	//上範囲の角度を下角度に流用(Startで代入)
 	float _angleLwrRange;
 
 	[Header("スピード倍率[1.0～1.2推奨]")]
@@ -18,12 +18,6 @@ public class ReflectionBankroll : BankrollBase
 		_angleLwrRange = 180 - _angleUprRange;
 	}
 
-	// Update is called once per frame
-	void Update()
-	{
-
-	}
-
 	public override void OnBankrollEffect(GameObject ballObject)
 	{
 		//変更する方向を格納
@@ -33,19 +27,19 @@ public class ReflectionBankroll : BankrollBase
 		Rigidbody rbBall = ballObject.GetComponent<Rigidbody>();
 		//ボールとピンの2点間の距離を出す
 		Vector3 contactVec = ballObject.transform.position - this.transform.position;
-		//高さを揃えるため、Y座標を0にする
+		//高さを揃えるため、Y座標を0にする(Y座標の差をなくす)
 		contactVec.y = 0f;
 		//ピンのZ軸(0,0,1)とのなす角を出す
 		float betweenAngle = Vector3.Angle(Vector3.forward, contactVec.normalized);
 
 		Debug.Log(betweenAngle);
 
+		//上下判定(デフォルト±30°)
 		if (betweenAngle <= _angleUprRange) 
 		{
 			Debug.Log("上判定");
 			toward = Vector3.left;
 		}
-
 		else if (betweenAngle >= _angleLwrRange) 
 		{
 			Debug.Log("下判定");
@@ -71,6 +65,7 @@ public class ReflectionBankroll : BankrollBase
 			}
 		}
 
+		//ボールの指定方向に、ボールの速度に倍率をかけたものを出力
 		rbBall.velocity = toward * rbBall.velocity.magnitude * _addSpeed;
 	}
 }
