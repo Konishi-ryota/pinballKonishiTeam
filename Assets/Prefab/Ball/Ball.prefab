@@ -160,3 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fireEffectPrefab: {fileID: 7465649033891993386, guid: b1161851450e6b04c8e57f44e7c869f3, type: 3}
+  _bombEffectPrefab: {fileID: 0}
+  _explosionEffectPrefab: {fileID: 0}
+  _explosionDelay: 3
+  _explosionRadius: 5

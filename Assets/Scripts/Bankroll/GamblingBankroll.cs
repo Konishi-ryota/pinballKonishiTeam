@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GamblingBankroll : BankrollBase
 {
@@ -23,6 +24,10 @@ public class GamblingBankroll : BankrollBase
     [Header("コインに何回当たったらダイスになるかの回数")]
     [SerializeField] private int _diceChangeCount = 10;
 
+    [SerializeField] Text text;
+    [SerializeField] Text hitormiss;
+    //[SerializeField] UnderPinUI _underHeadMsgPrefab;
+    //UnderPinUI _underPinMsg;
 
     private MoneyManager _moneyManager;
     public GamblePinState state;
@@ -35,6 +40,15 @@ public class GamblingBankroll : BankrollBase
     {
         state = GamblePinState.Coin;
         _moneyManager = GameObject.FindAnyObjectByType<MoneyManager>();
+        //テキストを最初に表示させない
+        text.gameObject.SetActive(false);
+        hitormiss.gameObject.SetActive(false);
+        //_underPinMsg = Instantiate(_underHeadMsgPrefab, canvasRect);
+        //_underPinMsg.targetTran = transform;
+    }
+    private void Update()
+    {
+        //_underPinMsg.ShowMsg(_coinPinHitCount);
     }
     //当たった時の効果
     public override void OnBankrollEffect(GameObject target)
@@ -43,23 +57,35 @@ public class GamblingBankroll : BankrollBase
         if (state == GamblePinState.Coin)
         {
             _coinPinHitCount++;
+            //当たった回数を表示
+            text.gameObject.SetActive(true);
+            text.text = _coinPinHitCount.ToString();
             int _coinFlipResult = Random.Range(0, 2);
             Debug.Log(_coinFlipResult + "が出た");
             if (_coinFlipResult == 0)
             {
                 //金を減らす処理
                 _moneyManager.DecreaseMoney(_getCoin);
+                //はずれのテキストを表示
+                hitormiss.gameObject.SetActive(true );
+                hitormiss.text = "はずれ";
             }
             else if (_coinFlipResult == 1)
             {
                 //金を増やす処理
                 _moneyManager.AddMoney(_getCoin);
+                //あたりのテキスト表示
+                hitormiss.gameObject.SetActive(true);
+                hitormiss.text = "当たり";
             }
 
             if (_coinPinHitCount == _diceChangeCount)
             {
                 //状態をダイスに変更
                 state = GamblePinState.Dice;
+                hitormiss.gameObject.SetActive(false);
+                text.gameObject.SetActive(false);
+                //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
                 GetComponent<Renderer>().material.color = Color.red;
                 _coinPinHitCount = 0;
             }
@@ -72,7 +98,10 @@ public class GamblingBankroll : BankrollBase
 
             _moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[_rolledDiceNumber]);
             state= GamblePinState.Coin;
+            //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
             GetComponent<Renderer>().material.color = Color.blue;
+
+            
         }
     }
 
