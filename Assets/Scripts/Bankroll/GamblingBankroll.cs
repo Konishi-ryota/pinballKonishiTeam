@@ -66,6 +66,7 @@ public class GamblingBankroll : BankrollBase
             {
                 //金を減らす処理
                 _moneyManager.DecreaseMoney(_getCoin);
+                Debug.Log($"{_getCoin}円失った。");
                 //はずれのテキストを表示
                 hitormiss.gameObject.SetActive(true );
                 hitormiss.text = "はずれ";
@@ -74,6 +75,7 @@ public class GamblingBankroll : BankrollBase
             {
                 //金を増やす処理
                 _moneyManager.AddMoney(_getCoin);
+                Debug.Log($"{_getCoin}円手に入れた");
                 //あたりのテキスト表示
                 hitormiss.gameObject.SetActive(true);
                 hitormiss.text = "当たり";
@@ -97,7 +99,9 @@ public class GamblingBankroll : BankrollBase
             Debug.Log(_rolledDiceNumber+1 + "が出た");
 
             _moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[_rolledDiceNumber]);
-            state= GamblePinState.Coin;
+            Debug.Log($"所持金が{_rolledDiceNumber}倍された");
+
+            state = GamblePinState.Coin;
             //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
             GetComponent<Renderer>().material.color = Color.blue;
 
