@@ -99,7 +99,7 @@ public class GamblingBankroll : BankrollBase
             Debug.Log(_rolledDiceNumber+1 + "が出た");
 
             _moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[_rolledDiceNumber]);
-            Debug.Log($"所持金が{_rolledDiceNumber}倍された");
+            Debug.Log($"所持金が{_moneyMultiplierFromDice[_rolledDiceNumber]}倍された");
 
             state = GamblePinState.Coin;
             //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫

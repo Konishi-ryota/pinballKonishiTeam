@@ -163,4 +163,4 @@ MonoBehaviour:
   _bombEffectPrefab: {fileID: 0}
   _explosionEffectPrefab: {fileID: 0}
   _explosionDelay: 3
-  _explosionRadius: 5
+  _explosionRadius: 30
