@@ -20,6 +20,12 @@ public class BallDeadZone : MonoBehaviour
         {
             Destroy(other.gameObject);
             _moneyManager.AddMoney(_addMoneyOnBallDrop);
+
+            FieldControl[] fields = FindObjectsOfType<FieldControl>();
+            foreach (FieldControl field in fields)
+            {
+                field.AddTurnCount();
+            }
         }
     }
 }
