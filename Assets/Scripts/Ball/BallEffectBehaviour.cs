@@ -22,7 +22,8 @@ public class BallEffectBehaviour : MonoBehaviour
     private Coroutine _bombCoroutine;
 
     private Renderer _renderer;
-
+    [Header("爆発でお金が増える数")]
+    [SerializeField] private int _addBombMoney = 500;
     private void Awake()
     {
         _renderer = GetComponent<Renderer>();
@@ -97,6 +98,7 @@ public class BallEffectBehaviour : MonoBehaviour
         // 爆風の範囲内にあるオブジェクトを取得
         Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius);
 
+        
         // MoneyManagerの参照を取得
         MoneyManager moneyManager = GameObject.FindObjectOfType<MoneyManager>();
         if (moneyManager == null)
@@ -111,7 +113,9 @@ public class BallEffectBehaviour : MonoBehaviour
         {
             if (hit.TryGetComponent<BankrollBase>(out var bankroll))
             {
-                totalMoney += bankroll.BuildCost;
+                totalMoney += _addBombMoney;
+                //増えるお金の変数名がそれぞれ違い大変面倒＋拡張性の問題のため爆発範囲の効果を発動させることにする
+                bankroll.OnBankrollEffect(gameObject);
             }
         }
 
@@ -121,6 +125,9 @@ public class BallEffectBehaviour : MonoBehaviour
             moneyManager.AddMoney(totalMoney);
             Debug.Log($"爆発で {totalMoney} 円獲得！");
         }
+        
+
+        
 
         _effect = BallEffect.None;
     }
