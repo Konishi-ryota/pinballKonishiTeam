@@ -237,7 +237,7 @@ MonoBehaviour:
   - 1.5
   - 2
   _getCoin: 1000
-  _diceChangeCount: 2
+  _diceChangeCount: 5
   text: {fileID: 687317746387081505}
   hitormiss: {fileID: 5920015534690679764}
   state: 0
