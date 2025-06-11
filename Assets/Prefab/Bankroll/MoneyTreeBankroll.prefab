@@ -230,7 +230,7 @@ MonoBehaviour:
   _bankrollParentName: BankrollParent
   _defultBankrollPrefabName: DefultBankroll
   _moneyBudBankroll: {fileID: 7237170723858530388, guid: 04c6fc077b80b2343b8372fea37033cd, type: 3}
-  _breakCount: 3
+  _breakCount: 1
   _brakeGetMoney: 25000
   _coinPrefab: {fileID: 7129501776429702102, guid: d2804291934d23c4698e4570dd8f2513, type: 3}
   _coinScatterPositions:
@@ -244,7 +244,8 @@ MonoBehaviour:
   - {fileID: 8826780194798514793}
   - {fileID: 5135816941907161293}
   - {fileID: 100646919615871265}
-  _scatteredPower: 6
+  _coinScatterCounts: 10
+  _scatteredPower: 4
   _clonePosition: {fileID: 5757304684706104804}
 --- !u!1 &4803515102842622547
 GameObject:

@@ -15,18 +15,19 @@ public class CointControl : MoneyGainBankrollBase
     {
         Ray ray = new Ray(this.transform.position, new Vector3(0, -1, 0));
         RaycastHit hit;
-        Debug.DrawRay(this.transform.position, new Vector3(0, -1, 0),Color.blue);
+        Debug.DrawRay(this.transform.position, new Vector3(0, -1, 0), Color.blue);
         if (Physics.Raycast(ray, out hit, 3))
         {
             if (hit.collider.gameObject.name == "Table" && this.transform.position.y <= hit.point.y + _fieldDistance + 0.5f)
             {
                 Vector3 vector = this.transform.position;
-                vector.y = hit.point.y + _fieldDistance + 0.5f ;
+                vector.y = hit.point.y + _fieldDistance + 0.5f;
                 this.transform.position = vector;
                 this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
-        if(_timer >= _destroyTimer)
+
+        if (_timer >= _destroyTimer)
         {
             Destroy(this.gameObject);
         }

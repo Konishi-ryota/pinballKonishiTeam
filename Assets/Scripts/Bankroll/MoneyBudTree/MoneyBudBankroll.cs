@@ -3,20 +3,19 @@ using UnityEngine;
 public class MoneyBudBankroll : MoneyGainBankrollBase
 {
     [Header("お金をもらうための回数")]
-    [SerializeField] public int _moneyGetCount = 10;
+    [SerializeField] private int _moneyGetCount = 10;
     [Header("もらうお金")]
-    [SerializeField] public int _getMoney = 1000;
+    [SerializeField] private int _getMoney = 1000;
     [Header("木に成長するまでのレベル")]
-    [SerializeField] public int _growthLevelCount = 10;
+    [SerializeField] private int _growthLevelCount = 10;
     [Header("お金がなる木バンクロール")]
-    [SerializeField] public GameObject _moneyTreeBankroll;
+    [SerializeField] private GameObject _moneyTreeBankroll;
     private int _hitCount = 0;
     private int _growthLevel = 0;
     private BuildingPlacer _buildingPlacer;
     public override void OnBankrollHit(GameObject ballObject)
     {
         _hitCount++;
-        Debug.Log(_hitCount);
         if (_hitCount >= _moneyGetCount)
         {
             GainMoney(_getMoney);
@@ -29,13 +28,12 @@ public class MoneyBudBankroll : MoneyGainBankrollBase
             }
         }
 
-       
+
 
     }
 
     private void GrowingTree()
     {
-        Debug.Log("成長");
         if (_moneyTreeBankroll == null)
         {
             Debug.LogError("_moneyTreeBankroll Null");
@@ -48,7 +46,4 @@ public class MoneyBudBankroll : MoneyGainBankrollBase
         newBankroll.transform.parent = _buildingPlacer.GetBankrollParent().transform;
         Destroy(this.gameObject);
     }
-
-
-
 }

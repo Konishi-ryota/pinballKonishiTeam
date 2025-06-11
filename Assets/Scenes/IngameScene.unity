@@ -1259,7 +1259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b565c91a3f49846b83e53aac7c6dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _initialMoney: 5000
+  _initialMoney: 10000
   _moneyText: {fileID: 875281158}
 --- !u!1 &267823492
 GameObject:
@@ -2967,6 +2967,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2040254696}
+  - {fileID: 1027948132}
   - {fileID: 446267224}
   - {fileID: 898011922}
   - {fileID: 267823496}
@@ -3137,6 +3139,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollName
+      value: "\u500D\u5316\u30D0\u30F3\u30AF\u30ED\u30FC\u30EB"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollPrefab
+      value: 
+      objectReference: {fileID: 2711021454324600581, guid: 5e2fbef1419b47a48bcdd8d94552d3c5, type: 3}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollPreviewPrefab
+      value: 
+      objectReference: {fileID: 2711021454324600581, guid: 5e2fbef1419b47a48bcdd8d94552d3c5, type: 3}
     - target: {fileID: 4440546842315981014, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: m_Name
       value: BankrollButtonPrefab (8)
@@ -3234,6 +3252,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollName
+      value: "\u91D1\u306E\u306A\u308B\u82BD"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollPrefab
+      value: 
+      objectReference: {fileID: 7237170723858530388, guid: 04c6fc077b80b2343b8372fea37033cd, type: 3}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollPreviewPrefab
+      value: 
+      objectReference: {fileID: 7237170723858530388, guid: 04c6fc077b80b2343b8372fea37033cd, type: 3}
     - target: {fileID: 4440546842315981014, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: m_Name
       value: BankrollButtonPrefab (7)
@@ -4325,7 +4359,7 @@ Transform:
   m_GameObject: {fileID: 992345468}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.3, y: 0.70000005, z: -10.47}
+  m_LocalPosition: {x: 6.31, y: 0.70000005, z: -10.47}
   m_LocalScale: {x: 1, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4494,6 +4528,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8588928286056020293, guid: f38566aa0194ee04db9cadf5141883d6, type: 3}
   m_PrefabInstance: {fileID: 1012789294}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1027948131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1027948132}
+  m_Layer: 0
+  m_Name: FieldG
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1027948132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027948131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.73, y: 0.08, z: 0.96}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 664461089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1059358231
 GameObject:
   m_ObjectHideFlags: 0
@@ -6385,6 +6450,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017036213}
   m_CullTransparentMesh: 1
+--- !u!1 &2040254695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2040254696}
+  m_Layer: 0
+  m_Name: FieldS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2040254696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040254695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.71, y: 0.08, z: 13.94}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 664461089}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2060465501
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6843,7 +6939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollCount
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollMoney
