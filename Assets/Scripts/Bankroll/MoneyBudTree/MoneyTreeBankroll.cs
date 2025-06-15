@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using Random = UnityEngine.Random;
 public class MoneyTreeBankroll : MoneyGainBankrollBase
@@ -19,6 +20,8 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
     [SerializeField] private float _scatteredPower = 1;
     [Header("コインを生成する位置")]
     [SerializeField] private Transform _clonePosition;
+    [Header("周りをチェックする距離")]
+    [SerializeField] private float _rayDistance;
     private int _hitCount = 0;
     private BuildingPlacer _buildingPlacer;
     public override void OnBankrollHit(GameObject ballObject)
@@ -47,10 +50,7 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            ScatterCoins();
-        } 
+
     }
     private void ScatterCoins()
     {
@@ -58,12 +58,36 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
         {
             GameObject newCoin = Instantiate(_coinPrefab);
             newCoin.transform.position = _clonePosition.position;
-            _clonePosition.Rotate(0, Random.Range(10f, 100f) ,0);
-            Vector3 force = _clonePosition.transform.forward;
+            Vector3 force = Vector3.zero;
+            do
+            {
+            _clonePosition.Rotate(0, Random.Range(10f, 100f), 0);
+                force = _clonePosition.transform.forward;
+                Debug.Log(RayCheck(_clonePosition.transform.forward));
+
+            } while (RayCheck(force));
             Rigidbody coinRig = newCoin.GetComponent<Rigidbody>();
             coinRig.AddForce(force * _scatteredPower, ForceMode.VelocityChange);
             //coinRig.velocity = force * _scatteredPower;
 
         }
+    }
+    private bool RayCheck(Vector3 vector)
+    {
+        bool isHit = false;
+        Ray ray = new Ray(this.transform.position, vector);
+        RaycastHit hit;
+        Debug.DrawRay(this.transform.position, vector * _rayDistance, Color.red);
+        if (Physics.Raycast(ray, out hit, _rayDistance))
+        {
+            string tag = hit.collider.tag;
+            isHit = (tag == "Bankroll" || tag == "DefaultBankroll" || tag == "Ball");
+            isHit = !isHit;
+        }
+        else
+            isHit = false;
+
+        return isHit;
+
     }
 }
