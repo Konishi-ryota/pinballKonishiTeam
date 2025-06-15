@@ -54,22 +54,15 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
     }
     private void ScatterCoins()
     {
-        Debug.Log("AAAA");
         for (int i = 0; i < _coinScatterCounts; i++)
         {
             GameObject newCoin = Instantiate(_coinPrefab);
             newCoin.transform.position = _clonePosition.position;
-            Vector3 randomPosition = Vector3.zero;
-            do
-            {
-                randomPosition = new Vector3(Random.Range(0f, 4f), Random.Range(0.5f, 1f), Random.Range(0f, 3f));
-
-            } while (Vector3.Distance(new Vector3(0, 0, 0), randomPosition) < 1.7f);
-            Debug.Log(randomPosition);
-            Vector3 force = this.transform.TransformPoint(randomPosition);
-            //force.Normalize();
+            _clonePosition.Rotate(0, Random.Range(10f, 100f) ,0);
+            Vector3 force = _clonePosition.transform.forward;
             Rigidbody coinRig = newCoin.GetComponent<Rigidbody>();
-            coinRig.velocity = force * _scatteredPower;
+            coinRig.AddForce(force * _scatteredPower, ForceMode.VelocityChange);
+            //coinRig.velocity = force * _scatteredPower;
 
         }
     }
