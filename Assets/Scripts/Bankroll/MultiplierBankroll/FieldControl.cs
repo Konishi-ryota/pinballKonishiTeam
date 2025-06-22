@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEditor;
 using UnityEngine;
 
@@ -24,12 +25,16 @@ public class FieldControl : MonoBehaviour
         }
         else if (daleteType == type.turn)
         {
-            TurnCount();
+           // TurnCount();
         }
     }
     public void TimeCount()
     {
-        timer += Time.deltaTime;
+        bool isBall = FindAnyObjectByType<BallManager>().GetBallCount() > 0;
+        if (isBall)
+        {
+            timer += Time.deltaTime;
+        }
         if(timer >= deleteTime)
         {
             Delete();
@@ -57,8 +62,19 @@ public class FieldControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bankroll") && other.gameObject.GetComponent<MoneyGainBankrollBase>() != null)
         {
-            other.gameObject.GetComponent<MoneyGainBankrollBase>().SetMoneyMultiplier(2);//î{ó¶ÇÇQî{Ç…ïœçX
+            
         }
+        Debug.Log(other.gameObject);
+        if (other.gameObject.GetComponent<GrowthBankroll>() != null && other.gameObject.GetComponent<FieldHitCheck>() == null)
+        {
+            other.gameObject.AddComponent<FieldHitCheck>().fieldObject = this.gameObject;
+
+        }
+
+    }
+    public void OnTriggerStay(Collider other)
+    {
+       
     }
 }
 [CustomEditor(typeof(FieldControl))]

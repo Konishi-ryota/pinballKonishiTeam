@@ -125,6 +125,4 @@ MonoBehaviour:
   _defultBankrollPrefab: {fileID: 5906569327928994909, guid: f38566aa0194ee04db9cadf5141883d6, type: 3}
   _bankrollParentName: BankrollParent
   _defultBankrollPrefabName: DefultBankroll
-  _fieldObject: {fileID: 4825248762604912989, guid: 39b1dcf98af4c194a9258f7a78db7796, type: 3}
-  _startPositionObjName: FieldS
-  _goalPositionObjName: FieldG
+  _fieldObject: {fileID: 6233211358626408820, guid: 9c9e7f6656f02ea4fad1abf79f20826a, type: 3}
