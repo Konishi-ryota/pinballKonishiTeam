@@ -38,6 +38,7 @@ public class GamblingBankroll : BankrollBase
     //UnderPinUI _underPinMsg;
 
     private MoneyManager _moneyManager;
+    private SoundManager _soundManager;
     public GamblePinState state;
     public enum GamblePinState
     {
@@ -48,6 +49,7 @@ public class GamblingBankroll : BankrollBase
     {
         state = GamblePinState.Coin;
         _moneyManager = GameObject.FindAnyObjectByType<MoneyManager>();
+        _soundManager = GameObject.FindAnyObjectByType<SoundManager>();
         //テキストを最初に表示させない
         text.gameObject.SetActive(false);
         hitormiss.gameObject.SetActive(false);
@@ -77,6 +79,7 @@ public class GamblingBankroll : BankrollBase
                 //はずれのテキストを表示
                 hitormiss.gameObject.SetActive(true );
                 hitormiss.text = "はずれ";
+                _soundManager.PlaySE(SESoundData.SE.Coinfail);
             }
             else if (_coinFlipResult == 1)
             {
@@ -85,6 +88,7 @@ public class GamblingBankroll : BankrollBase
                 //あたりのテキスト表示
                 hitormiss.gameObject.SetActive(true);
                 hitormiss.text = "当たり";
+                _soundManager.PlaySE(SESoundData.SE.CoinOK);
             }
 
             if (_coinPinHitCount == _diceChangeCount)
@@ -112,7 +116,7 @@ public class GamblingBankroll : BankrollBase
             //GetComponent<Renderer>().material.color = Color.blue;
             GetComponent<MeshFilter>().mesh = CoinMesh;
             GetComponent<Renderer>().material = CoinMaterial;
-            
+            _soundManager.PlaySE(SESoundData.SE.DiceRoll);
         }
     }
 
