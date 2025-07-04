@@ -23,6 +23,14 @@ public class GamblingBankroll : BankrollBase
     [SerializeField] private int _getCoin = 5000;
     [Header("コインに何回当たったらダイスになるかの回数")]
     [SerializeField] private int _diceChangeCount = 10;
+    [Header("コインピンのメッシュ")]
+    [SerializeField] private Mesh CoinMesh;
+    [Header("ダイスピンのメッシュ")]
+    [SerializeField] private Mesh DiceMesh;
+    [Header("コインピンのマテリアル")]
+    [SerializeField] private Material CoinMaterial;
+    [Header("ダイスピンのマテリアル")]
+    [SerializeField] private Material DiceMaterial;
 
     [SerializeField] Text text;
     [SerializeField] Text hitormiss;
@@ -86,7 +94,9 @@ public class GamblingBankroll : BankrollBase
                 hitormiss.gameObject.SetActive(false);
                 text.gameObject.SetActive(false);
                 //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
-                GetComponent<Renderer>().material.color = Color.red;
+                //GetComponent<Renderer>().material.color = Color.red;
+                GetComponent<MeshFilter>().mesh = DiceMesh;
+                GetComponent<Renderer>().material = DiceMaterial;
                 _coinPinHitCount = 0;
             }
         }
@@ -99,8 +109,9 @@ public class GamblingBankroll : BankrollBase
             _moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[_rolledDiceNumber]);
             state= GamblePinState.Coin;
             //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
-            GetComponent<Renderer>().material.color = Color.blue;
-
+            //GetComponent<Renderer>().material.color = Color.blue;
+            GetComponent<MeshFilter>().mesh = CoinMesh;
+            GetComponent<Renderer>().material = CoinMaterial;
             
         }
     }
