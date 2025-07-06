@@ -202,4 +202,8 @@ public class BuildingPlacer : MonoBehaviour
     {
         _moneyManager.DecreaseMoney(buildCost);
     }
+    public GameObject GetBankrollParent()
+    {
+        return _bankrollParent;
+    }
 }
