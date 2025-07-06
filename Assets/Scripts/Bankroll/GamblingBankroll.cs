@@ -75,8 +75,8 @@ public class GamblingBankroll : BankrollBase
             {
                 //金を減らす処理
                 _moneyManager.DecreaseMoney(_getCoin);
-                Debug.Log($"{_getCoin}円失った。");
-                //はずれのテキストを表示
+                Debug.Log($"{_getCoin}�~�������B");
+                //�͂���̃e�L�X�g��\��
                 hitormiss.gameObject.SetActive(true );
                 hitormiss.text = "はずれ";
                 _soundManager.PlaySE(SESoundData.SE.Coinfail);
@@ -85,8 +85,9 @@ public class GamblingBankroll : BankrollBase
             {
                 //金を増やす処理
                 _moneyManager.AddMoney(_getCoin);
-                Debug.Log($"{_getCoin}円手に入れた");
-                //あたりのテキスト表示
+                Debug.Log($"{_getCoin}�~��ɓ��ꂽ");
+                //������̃e�L�X�g�\��
+
                 hitormiss.gameObject.SetActive(true);
                 hitormiss.text = "当たり";
                  _soundManager.PlaySE(SESoundData.SE.CoinOK);

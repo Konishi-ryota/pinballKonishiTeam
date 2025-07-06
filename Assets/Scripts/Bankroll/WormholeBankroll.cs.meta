@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 7eecca9571454b742a47b36982cb3041
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _defultBankrollPrefab: {instanceID: 0}
+  - hole: {fileID: 7846855354810715148, guid: c514f2b3ba35ce248a8a46a4427ab5c5, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
