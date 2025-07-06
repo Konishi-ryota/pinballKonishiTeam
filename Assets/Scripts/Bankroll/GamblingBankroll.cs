@@ -3,33 +3,41 @@ using UnityEngine.UI;
 
 public class GamblingBankroll : BankrollBase
 {
-    //ƒRƒCƒ“ƒsƒ“‚É“–‚½‚Á‚½‰ñ”i10‰ñ‚Åi‰»j
+    //ã‚³ã‚¤ãƒ³ãƒ”ãƒ³ã«å½“ãŸã£ãŸå›æ•°ï¼ˆ10å›ã§é€²åŒ–ï¼‰
     private int _coinPinHitCount = 0;
-    //ƒTƒCƒRƒ‚Ìo–Úi1`6j
+    //ã‚µã‚¤ã‚³ãƒ­ã®å‡ºç›®ï¼ˆ1ï½6ï¼‰
     private int _rolledDiceNumber = 0;
-    //o–Ú‚É‰‚¶‚½”{—¦i—áF1¨0.7j
-    [Header("ƒRƒCƒ“‚ğU‚Á‚½‚É‚à‚ç‚¦‚é‘Œ¸ƒRƒCƒ“")]
+    //å‡ºç›®ã«å¿œã˜ãŸå€ç‡ï¼ˆä¾‹ï¼š1â†’0.7ï¼‰
+    [Header("ã‚³ã‚¤ãƒ³ã‚’æŒ¯ã£ãŸæ™‚ã«ã‚‚ã‚‰ãˆã‚‹å¢—æ¸›ã‚³ã‚¤ãƒ³")]
     [SerializeField] private float[] _moneyMultiplierFromDice = { 0.7f, 0.8f, 1.0f, 1.2f, 1.5f, 2.0f };
-    //”{—¦‚ğ‚©‚¯‚é‘O‚ÌŠ‹ài—š—ğ‚Æ‚µ‚Äj„ƒfƒoƒbƒO—p‚ÉƒRƒCƒ“‚ª‘‰Á‚µ‚Ä‚¢‚é‚©Šm”F‚Å‚«‚é
+    //å€ç‡ã‚’ã‹ã‘ã‚‹å‰ã®æ‰€æŒé‡‘ï¼ˆå±¥æ­´ã¨ã—ã¦ï¼‰ï¼ãƒ‡ãƒãƒƒã‚°ç”¨ã«ã‚³ã‚¤ãƒ³ãŒå¢—åŠ ã—ã¦ã„ã‚‹ã‹ç¢ºèªã§ãã‚‹
     private int _moneyBeforeMultiplier = 0;
-    //0‚©1iƒRƒCƒ“ƒgƒXŒ‹‰Êj
+    //0ã‹1ï¼ˆã‚³ã‚¤ãƒ³ãƒˆã‚¹çµæœï¼‰
     private int _coinFlipResult = 0;
-    //’¼‘O‚ÌƒMƒƒƒ“ƒuƒ‹Œ‹‰Ê
+    //ç›´å‰ã®ã‚®ãƒ£ãƒ³ãƒ–ãƒ«çµæœ
     private int _lastCoinResult = 0;
-    //ƒTƒCƒRƒ‚ªŠù‚ÉU‚ç‚ê‚½‚©‚Ç‚¤‚©‚Ìƒtƒ‰ƒO
+    //ã‚µã‚¤ã‚³ãƒ­ãŒæ—¢ã«æŒ¯ã‚‰ã‚ŒãŸã‹ã©ã†ã‹ã®ãƒ•ãƒ©ã‚°
     private bool _hasRolledDice = false;
-    //ƒRƒCƒ“‚ğU‚Á‚½‚É‚à‚ç‚¦‚éƒRƒCƒ“i+-5000j
-    [Header("ƒRƒCƒ“‚ğU‚Á‚½‚É‚à‚ç‚¦‚é‘Œ¸ƒRƒCƒ“")]
+    //ã‚³ã‚¤ãƒ³ã‚’æŒ¯ã£ãŸæ™‚ã«ã‚‚ã‚‰ãˆã‚‹ã‚³ã‚¤ãƒ³ï¼ˆ+-5000ï¼‰
+    [Header("ã‚³ã‚¤ãƒ³ã‚’æŒ¯ã£ãŸæ™‚ã«ã‚‚ã‚‰ãˆã‚‹å¢—æ¸›ã‚³ã‚¤ãƒ³")]
     [SerializeField] private int _getCoin = 5000;
-    [Header("ƒRƒCƒ“‚É‰½‰ñ“–‚½‚Á‚½‚çƒ_ƒCƒX‚É‚È‚é‚©‚Ì‰ñ”")]
+    [Header("ã‚³ã‚¤ãƒ³ã«ä½•å›å½“ãŸã£ãŸã‚‰ãƒ€ã‚¤ã‚¹ã«ãªã‚‹ã‹ã®å›æ•°")]
     [SerializeField] private int _diceChangeCount = 10;
-
+    [Header("ã‚³ã‚¤ãƒ³ãƒ”ãƒ³ã®ãƒ¡ãƒƒã‚·ãƒ¥")]
+    [SerializeField] private Mesh CoinMesh;
+    [Header("ãƒ€ã‚¤ã‚¹ãƒ”ãƒ³ã®ãƒ¡ãƒƒã‚·ãƒ¥")]
+    [SerializeField] private Mesh DiceMesh;
+    [Header("ã‚³ã‚¤ãƒ³ãƒ”ãƒ³ã®ãƒãƒ†ãƒªã‚¢ãƒ«")]
+    [SerializeField] private Material CoinMaterial;
+    [Header("ãƒ€ã‚¤ã‚¹ãƒ”ãƒ³ã®ãƒãƒ†ãƒªã‚¢ãƒ«")]
+    [SerializeField] private Material DiceMaterial;
     [SerializeField] Text text;
     [SerializeField] Text hitormiss;
     //[SerializeField] UnderPinUI _underHeadMsgPrefab;
     //UnderPinUI _underPinMsg;
 
     private MoneyManager _moneyManager;
+    private SoundManager _soundManager;
     public GamblePinState state;
     public enum GamblePinState
     {
@@ -40,7 +48,8 @@ public class GamblingBankroll : BankrollBase
     {
         state = GamblePinState.Coin;
         _moneyManager = GameObject.FindAnyObjectByType<MoneyManager>();
-        //ƒeƒLƒXƒg‚ğÅ‰‚É•\¦‚³‚¹‚È‚¢
+        _soundManager = GameObject.FindAnyObjectByType<SoundManager>();
+        //ãƒ†ã‚­ã‚¹ãƒˆã‚’æœ€åˆã«è¡¨ç¤ºã•ã›ãªã„
         text.gameObject.SetActive(false);
         hitormiss.gameObject.SetActive(false);
         //_underPinMsg = Instantiate(_underHeadMsgPrefab, canvasRect);
@@ -50,62 +59,66 @@ public class GamblingBankroll : BankrollBase
     {
         //_underPinMsg.ShowMsg(_coinPinHitCount);
     }
-    //“–‚½‚Á‚½‚ÌŒø‰Ê
+    //å½“ãŸã£ãŸæ™‚ã®åŠ¹æœ
     public override void OnBankrollEffect(GameObject target)
     {
-        //ƒRƒCƒ“‚É“–‚½‚Á‚½‚ç‚Ìˆ—
+        //ã‚³ã‚¤ãƒ³ã«å½“ãŸã£ãŸã‚‰ã®å‡¦ç†
         if (state == GamblePinState.Coin)
         {
             _coinPinHitCount++;
-            //“–‚½‚Á‚½‰ñ”‚ğ•\¦
+            //å½“ãŸã£ãŸå›æ•°ã‚’è¡¨ç¤º
             text.gameObject.SetActive(true);
             text.text = _coinPinHitCount.ToString();
             int _coinFlipResult = Random.Range(0, 2);
-            Debug.Log(_coinFlipResult + "‚ªo‚½");
+            Debug.Log(_coinFlipResult + "ãŒå‡ºãŸ");
             if (_coinFlipResult == 0)
             {
-                //‹à‚ğŒ¸‚ç‚·ˆ—
+                //é‡‘ã‚’æ¸›ã‚‰ã™å‡¦ç†
                 _moneyManager.DecreaseMoney(_getCoin);
-                Debug.Log($"{_getCoin}‰~¸‚Á‚½B");
-                //‚Í‚¸‚ê‚ÌƒeƒLƒXƒg‚ğ•\¦
+                Debug.Log($"{_getCoin}å††å¤±ã£ãŸã€‚");
+                //ã¯ãšã‚Œã®ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤º
                 hitormiss.gameObject.SetActive(true );
-                hitormiss.text = "‚Í‚¸‚ê";
+                hitormiss.text = "ã¯ãšã‚Œ";
+                _soundManager.PlaySE(SESoundData.SE.Coinfail);
             }
             else if (_coinFlipResult == 1)
             {
-                //‹à‚ğ‘‚â‚·ˆ—
+                //é‡‘ã‚’å¢—ã‚„ã™å‡¦ç†
                 _moneyManager.AddMoney(_getCoin);
-                Debug.Log($"{_getCoin}‰~è‚É“ü‚ê‚½");
-                //‚ ‚½‚è‚ÌƒeƒLƒXƒg•\¦
+                Debug.Log($"{_getCoin}å††æ‰‹ã«å…¥ã‚ŒãŸ");
+                //ã‚ãŸã‚Šã®ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º
                 hitormiss.gameObject.SetActive(true);
-                hitormiss.text = "“–‚½‚è";
+                hitormiss.text = "å½“ãŸã‚Š";
+                 _soundManager.PlaySE(SESoundData.SE.CoinOK);
             }
 
             if (_coinPinHitCount == _diceChangeCount)
             {
-                //ó‘Ô‚ğƒ_ƒCƒX‚É•ÏX
+                //çŠ¶æ…‹ã‚’ãƒ€ã‚¤ã‚¹ã«å¤‰æ›´
                 state = GamblePinState.Dice;
                 hitormiss.gameObject.SetActive(false);
                 text.gameObject.SetActive(false);
-                //ƒfƒoƒbƒN—p‚É‚í‚©‚è‚â‚·‚­‚µ‚Ä‚¢‚é‚¾‚¯‚È‚Ì‚ÅAprefab“ü‚ê‚½‚çƒRƒƒ“ƒgƒAƒEƒg‚µ‚Ä‚­‚ê‚Ä‘åä•v
-                GetComponent<Renderer>().material.color = Color.red;
+                //ãƒ‡ãƒãƒƒã‚¯ç”¨ã«ã‚ã‹ã‚Šã‚„ã™ãã—ã¦ã„ã‚‹ã ã‘ãªã®ã§ã€prefabå…¥ã‚ŒãŸã‚‰ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã—ã¦ãã‚Œã¦å¤§ä¸ˆå¤«
+                //GetComponent<Renderer>().material.color = Color.red;
+                GetComponent<MeshFilter>().mesh = DiceMesh;
+                GetComponent<Renderer>().material = DiceMaterial;
                 _coinPinHitCount = 0;
             }
         }
-        //ƒ_ƒCƒX‚É“–‚½‚Á‚½‚ç‚Ìˆ—
+        //ãƒ€ã‚¤ã‚¹ã«å½“ãŸã£ãŸã‚‰ã®å‡¦ç†
         else
         {
             int _rolledDiceNumber = Random.Range(0, _moneyMultiplierFromDice.Length);
-            Debug.Log(_rolledDiceNumber+1 + "‚ªo‚½");
+            Debug.Log(_rolledDiceNumber+1 + "ãŒå‡ºãŸ");
 
             _moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[_rolledDiceNumber]);
-            Debug.Log($"Š‹à‚ª{_moneyMultiplierFromDice[_rolledDiceNumber]}”{‚³‚ê‚½");
+            state= GamblePinState.Coin;
+            //ãƒ‡ãƒãƒƒã‚¯ç”¨ã«ã‚ã‹ã‚Šã‚„ã™ãã—ã¦ã„ã‚‹ã ã‘ãªã®ã§ã€prefabå…¥ã‚ŒãŸã‚‰ã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã—ã¦ãã‚Œã¦å¤§ä¸ˆå¤«
+            //GetComponent<Renderer>().material.color = Color.blue;
+            GetComponent<MeshFilter>().mesh = CoinMesh;
+            GetComponent<Renderer>().material = CoinMaterial;
+            _soundManager.PlaySE(SESoundData.SE.DiceRoll);
 
-            state = GamblePinState.Coin;
-            //ƒfƒoƒbƒN—p‚É‚í‚©‚è‚â‚·‚­‚µ‚Ä‚¢‚é‚¾‚¯‚È‚Ì‚ÅAprefab“ü‚ê‚½‚çƒRƒƒ“ƒgƒAƒEƒg‚µ‚Ä‚­‚ê‚Ä‘åä•v
-            GetComponent<Renderer>().material.color = Color.blue;
-
-            
         }
     }
 

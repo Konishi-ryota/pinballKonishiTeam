@@ -38,7 +38,7 @@ public abstract class BankrollBase : MonoBehaviour
             _ballRigidbody = other.rigidbody;
             _hitPos = other.contacts[0].normal;
             OnBankrollEffect(other.gameObject);
-            SoundManager.Instance.PlaySE(SESoundData.SE.Hit); //音を鳴らす処理
+            //SoundManager.Instance.PlaySE(SESoundData.SE.Hit); //音を鳴らす処理
             
             //１度当たったらデフォルトのバンクロールに変更
             if (_isOneTimeOnly)

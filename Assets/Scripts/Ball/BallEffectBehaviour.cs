@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// ƒ{[ƒ‹‚ÌƒGƒtƒFƒNƒg‚ğ•Û‚·‚éƒNƒ‰ƒXB
+/// ãƒœãƒ¼ãƒ«ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’ä¿æŒã™ã‚‹ã‚¯ãƒ©ã‚¹ã€‚
 /// </summary>
 public class BallEffectBehaviour : MonoBehaviour
 {
@@ -10,9 +10,9 @@ public class BallEffectBehaviour : MonoBehaviour
     public BallEffect Effect { get => _effect; }
 
     [SerializeField] private GameObject _fireEffectPrefab;
-    //”š’e‚ÌŒ©‚½–Ú
+    //çˆ†å¼¾ã®è¦‹ãŸç›®
     [SerializeField] private GameObject _bombEffectPrefab;
-    //”š”­‚ÌƒGƒtƒFƒNƒg
+    //çˆ†ç™ºæ™‚ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ
     [SerializeField] private GameObject _explosionEffectPrefab;
     [Header("Bomb Settings")]
     [SerializeField] private float _explosionDelay = 3.0f;
@@ -22,7 +22,7 @@ public class BallEffectBehaviour : MonoBehaviour
     private Coroutine _bombCoroutine;
 
     private Renderer _renderer;
-    [Header("”š”­‚Å‚¨‹à‚ª‘‚¦‚é”")]
+    [Header("çˆ†ç™ºã§ãŠé‡‘ãŒå¢—ãˆã‚‹æ•°")]
     [SerializeField] private int _addBombMoney = 500;
     private void Awake()
     {
@@ -33,7 +33,7 @@ public class BallEffectBehaviour : MonoBehaviour
         if (_effect != ballEffect)
         {
             _effect = ballEffect;
-            //d•¡–h~
+            //é‡è¤‡é˜²æ­¢
             if (_activeEffect == null)
             {
                 Destroy(_activeEffect);
@@ -47,7 +47,7 @@ public class BallEffectBehaviour : MonoBehaviour
                     if (_bombEffectPrefab)
                         Instantiate(_bombEffectPrefab, transform);
 
-                    //ƒfƒoƒbƒN—p‚ÉF‚ğ•‚É‚µ‚Ä‚¢‚éB
+                    //ãƒ‡ãƒãƒƒã‚¯ç”¨ã«è‰²ã‚’é»’ã«ã—ã¦ã„ã‚‹ã€‚
                     _renderer.material.color = Color.black;
                     _bombCoroutine = StartCoroutine(BombCountdown());
                 }
@@ -56,12 +56,12 @@ public class BallEffectBehaviour : MonoBehaviour
     }
     private IEnumerator BombCountdown()
     {
-        // “_–ÅŠJn‚Ì1•b‘O‚Ü‚Å‘Ò‚Â
+        // ç‚¹æ»…é–‹å§‹ã®1ç§’å‰ã¾ã§å¾…ã¤
         yield return new WaitForSeconds(_explosionDelay - 1f);
 
-        // “_–Åˆ—i1•bŠÔ‚É•¡”‰ñ“_–Åj
-        float blinkDuration = 1f;      // “_–Å‘S‘Ì‚ÌŠÔ
-        float blinkInterval = 0.2f;    // 1‰ñ‚Ì“_–ÅüŠúi0.2•b‚ÅÔÌ•j
+        // ç‚¹æ»…å‡¦ç†ï¼ˆ1ç§’é–“ã«è¤‡æ•°å›ç‚¹æ»…ï¼‰
+        float blinkDuration = 1f;      // ç‚¹æ»…å…¨ä½“ã®æ™‚é–“
+        float blinkInterval = 0.2f;    // 1å›ã®ç‚¹æ»…å‘¨æœŸï¼ˆ0.2ç§’ã§èµ¤â‡”é»’ï¼‰
         float elapsed = 0f;
         bool isRed = false;
 
@@ -77,36 +77,35 @@ public class BallEffectBehaviour : MonoBehaviour
             elapsed += blinkInterval;
         }
 
-        // ”š”­ˆ—
+        // çˆ†ç™ºå‡¦ç†
         Explode();
     }
     /// <summary>
-    /// ”š”­‚ÉüˆÍ‚Ìƒsƒ“‚©‚ç‹àŠz‚ğæ“¾‚µA”š”­‰‰o‚ğs‚¤
+    /// çˆ†ç™ºæ™‚ã«å‘¨å›²ã®ãƒ”ãƒ³ã‹ã‚‰é‡‘é¡ã‚’å–å¾—ã—ã€çˆ†ç™ºæ¼”å‡ºã‚’è¡Œã†
     /// </summary>
     private void Explode()
     {
-        //ƒfƒoƒbƒN—p‚ÉF‚ğ”’‚É‚µ‚Ä‚¢‚é
+        //ãƒ‡ãƒãƒƒã‚¯ç”¨ã«è‰²ã‚’ç™½ã«ã—ã¦ã„ã‚‹
         _renderer.material.color = Color.white;
         
-        //”š”­ƒGƒtƒFƒNƒg‚ğ•\¦
+        //çˆ†ç™ºã‚¨ãƒ•ã‚§ã‚¯ãƒˆã‚’è¡¨ç¤º
         if (_explosionEffectPrefab != null)
         {
             Instantiate(_explosionEffectPrefab, transform.position, Quaternion.identity);
             
             
         }
-        // ”š•—‚Ì”ÍˆÍ“à‚É‚ ‚éƒIƒuƒWƒFƒNƒg‚ğæ“¾
+        // çˆ†é¢¨ã®ç¯„å›²å†…ã«ã‚ã‚‹ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’å–å¾—
         Collider[] hits = Physics.OverlapSphere(transform.position, _explosionRadius);
 
-        
-        // MoneyManager‚ÌQÆ‚ğæ“¾
+        // MoneyManagerã®å‚ç…§ã‚’å–å¾—
         MoneyManager moneyManager = GameObject.FindObjectOfType<MoneyManager>();
         if (moneyManager == null)
         {
-            Debug.LogWarning("MoneyManager‚ªŒ©‚Â‚©‚ç‚È‚©‚Á‚½‚½‚ßA‹àŠz‰ÁZ‚³‚ê‚Ü‚¹‚ñ‚Å‚µ‚½B");
+            Debug.LogWarning("MoneyManagerãŒè¦‹ã¤ã‹ã‚‰ãªã‹ã£ãŸãŸã‚ã€é‡‘é¡åŠ ç®—ã•ã‚Œã¾ã›ã‚“ã§ã—ãŸã€‚");
         }
 
-        // ”š•—‚Å“¾‚½‹àŠz‡Œv
+        // çˆ†é¢¨ã§å¾—ãŸé‡‘é¡åˆè¨ˆ
         int totalMoney = 0;
 
         foreach (var hit in hits)
@@ -114,26 +113,23 @@ public class BallEffectBehaviour : MonoBehaviour
             if (hit.TryGetComponent<BankrollBase>(out var bankroll))
             {
                 totalMoney += _addBombMoney;
-                //‘‚¦‚é‚¨‹à‚Ì•Ï”–¼‚ª‚»‚ê‚¼‚êˆá‚¢‘å•Ï–Ê“|{Šg’£«‚Ì–â‘è‚Ì‚½‚ß”š”­”ÍˆÍ‚ÌŒø‰Ê‚ğ”­“®‚³‚¹‚é‚±‚Æ‚É‚·‚é
+                //å¢—ãˆã‚‹ãŠé‡‘ã®å¤‰æ•°åãŒãã‚Œãã‚Œé•ã„å¤§å¤‰é¢å€’ï¼‹æ‹¡å¼µæ€§ã®å•é¡Œã®ãŸã‚çˆ†ç™ºç¯„å›²ã®åŠ¹æœã‚’ç™ºå‹•ã•ã›ã‚‹ã“ã¨ã«ã™ã‚‹
                 bankroll.OnBankrollEffect(gameObject);
             }
         }
 
-        // ‹àŠz‚ğ‰ÁZ
+        // é‡‘é¡ã‚’åŠ ç®—
         if (totalMoney > 0 && moneyManager != null)
         {
             moneyManager.AddMoney(totalMoney);
-            Debug.Log($"”š”­‚Å {totalMoney} ‰~Šl“¾I");
+            Debug.Log($"çˆ†ç™ºã§ {totalMoney} å††ç²å¾—ï¼");
         }
-        
-
-        
 
         _effect = BallEffect.None;
     }
 }
 /// <summary>
-/// ˆê’èŠÔŒã‚É”š”­‚·‚é‚½‚ß‚ÌƒRƒ‹[ƒ`ƒ“
+/// ä¸€å®šæ™‚é–“å¾Œã«çˆ†ç™ºã™ã‚‹ãŸã‚ã®ã‚³ãƒ«ãƒ¼ãƒãƒ³
 /// </summary>
 
 public enum BallEffect
