@@ -6,22 +6,15 @@ public class MultiplierBankroll : BankrollBase
 {
     [Header("当たった時に展開されるフィールドプレハブ")]
     [SerializeField] private GameObject _fieldObject;
-    [Header("フィールドを生成する範囲オブジェクトの名前")]
-    [SerializeField] private string _startPositionObjName;
-    [SerializeField] private string _goalPositionObjName;
-    private GameObject _startPosition;
-    private GameObject _goalPosition;
+    //private GameObject _bankrollParent;
     public override void OnBankrollEffect(GameObject ballObject)
     {
-        _startPosition = GameObject.Find(_startPositionObjName);
-        _goalPosition = GameObject.Find(_goalPositionObjName);
-
         GameObject newField = Instantiate(_fieldObject);
-        float randomX = Random.Range(_startPosition.transform.localPosition.x, _goalPosition.transform.localPosition.x);
-        float randomZ = Random.Range(_startPosition.transform.localPosition.z, _goalPosition.transform.localPosition.z);
-        newField.transform.parent = _startPosition.transform.parent;
-        newField.transform.localPosition = new Vector3(randomX, _startPosition.transform.localPosition.y, randomZ);
-        newField.transform.localEulerAngles = _startPosition.transform.localEulerAngles;
+        newField.transform.parent = _bankrollParent.transform;
+        Transform[] children = _bankrollParent.GetComponentsInChildren<Transform>();
+        Vector3 randomPosition = children[Random.Range(0, children.Length - 1)].position;
+        newField.transform.localPosition = new Vector3(randomPosition.x, _bankrollParent.transform.localPosition.y, randomPosition.z);
+        newField.transform.localEulerAngles = _bankrollParent.transform.localEulerAngles;
     }
 
 }

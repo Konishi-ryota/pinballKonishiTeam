@@ -42,7 +42,10 @@ public class BallManager : MonoBehaviour
         _ballCount--;
         CheckBall();
     }
-    
+    public int GetBallCount()
+    {
+        return _ballCount;
+    }
     //ボールを初期位置に戻す処理
     private void ResetBall()
     {

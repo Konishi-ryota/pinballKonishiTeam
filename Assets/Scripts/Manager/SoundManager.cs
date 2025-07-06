@@ -68,7 +68,12 @@ public class SESoundData
     {
         //ここの部分がラベルになる
         Hit,
-        
+        CoinHit,
+        CoinOK,
+        Coinfail,
+        DiceHit,
+        DiceRoll,
+        Dice1
     }
 
     public SE _se;
