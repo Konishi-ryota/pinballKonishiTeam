@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ReflectionBankroll : BankrollBase
 {
-	[Header("ƒsƒ“‘O•ûŒü(Z)‚ğ²‚É}{_angleRange}‹‚ğã”ÍˆÍF‰Šú30‹")]
+	[Header("ãƒ”ãƒ³å‰æ–¹å‘(Z)ã‚’è»¸ã«Â±{_angleRange}Â°ã‚’ä¸Šç¯„å›²ï¼šåˆæœŸ30Â°")]
 	[SerializeField] float _angleUprRange = 30f;
-	//ã”ÍˆÍ‚ÌŠp“x‚ğ‰ºŠp“x‚É—¬—p(Start‚Å‘ã“ü)
+	//ä¸Šç¯„å›²ã®è§’åº¦ã‚’ä¸‹è§’åº¦ã«æµç”¨(Startã§ä»£å…¥)
 	float _angleLwrRange;
 
-	[Header("ƒXƒs[ƒh”{—¦[1.0`1.2„§]")]
+	[Header("ã‚¹ãƒ”ãƒ¼ãƒ‰å€ç‡[1.0ï½1.2æ¨å¥¨]")]
 	[SerializeField] float _addSpeed = 1.1f;
 
 	// Start is called before the first frame update
@@ -20,52 +20,51 @@ public class ReflectionBankroll : BankrollBase
 
 	public override void OnBankrollEffect(GameObject ballObject)
 	{
-		//•ÏX‚·‚é•ûŒü‚ğŠi”[
+		//å¤‰æ›´ã™ã‚‹æ–¹å‘ã‚’æ ¼ç´
 		Vector3 toward = Vector3.zero;
-
-		//•ûŒü‚Ì•ÏX‚Æ‘¬“x‚Ì’Šo
+		//æ–¹å‘ã®å¤‰æ›´ã¨é€Ÿåº¦ã®æŠ½å‡º
 		Rigidbody rbBall = ballObject.GetComponent<Rigidbody>();
-		//ƒ{[ƒ‹‚Æƒsƒ“‚Ì2“_ŠÔ‚Ì‹——£‚ğo‚·
+
+		//ãƒœãƒ¼ãƒ«ã¨ãƒ”ãƒ³ã®2ç‚¹é–“ã®è·é›¢ã‚’å‡ºã™
 		Vector3 contactVec = ballObject.transform.position - this.transform.position;
-		//‚‚³‚ğ‘µ‚¦‚é‚½‚ßAYÀ•W‚ğ0‚É‚·‚é(YÀ•W‚Ì·‚ğ‚È‚­‚·)
+		//é«˜ã•ã‚’æƒãˆã‚‹ãŸã‚ã€Yåº§æ¨™ã‚’0ã«ã™ã‚‹(Yåº§æ¨™ã®å·®ã‚’ãªãã™)
 		contactVec.y = 0f;
-		//ƒsƒ“‚ÌZ²(0,0,1)‚Æ‚Ì‚È‚·Šp‚ğo‚·
+		//ãƒ”ãƒ³ã®Zè»¸(0,0,1)ã¨ã®ãªã™è§’ã‚’å‡ºã™
 		float betweenAngle = Vector3.Angle(Vector3.forward, contactVec.normalized);
 
-		Debug.Log(betweenAngle);
-
-		//ã‰º”»’è(ƒfƒtƒHƒ‹ƒg}30‹)
+    Debug.Log(betweenAngle);
+		//ä¸Šä¸‹åˆ¤å®š(ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆÂ±30Â°)
 		if (betweenAngle <= _angleUprRange) 
 		{
-			Debug.Log("ã”»’è");
+			Debug.Log($"ä¸Šåˆ¤å®šï¼š{betweenAngle}");
 			toward = Vector3.left;
 		}
 		else if (betweenAngle >= _angleLwrRange) 
 		{
-			Debug.Log("‰º”»’è");
+			Debug.Log($"ä¸‹åˆ¤å®šï¼š{betweenAngle}");
 			toward = Vector3.right;
 		}
 
-		//¶‰E”»’è
+		//å·¦å³åˆ¤å®š
 		else
 		{
 			if (contactVec.x < 0)
 			{
-				Debug.Log("¶”»’è");
+				Debug.Log($"å·¦åˆ¤å®šï¼š{betweenAngle}");
 				toward = -(Vector3.forward);
 			}
 			else if (contactVec.x > 0)
 			{
-				Debug.Log("‰E”»’è");
+				Debug.Log($"å³åˆ¤å®šï¼š{betweenAngle}");
 				toward = Vector3.forward;
 			}
 			else 
 			{
-				Debug.Log("”ÍˆÍ‚ª‚Æ‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+				Debug.Log("ç¯„å›²ãŒã¨ã‚Œã¦ã„ã¾ã›ã‚“");
 			}
 		}
 
-		//ƒ{[ƒ‹‚Ìw’è•ûŒü‚ÉAƒ{[ƒ‹‚Ì‘¬“x‚É”{—¦‚ğ‚©‚¯‚½‚à‚Ì‚ğo—Í
+		//ãƒœãƒ¼ãƒ«ã®æŒ‡å®šæ–¹å‘ã«ã€ãƒœãƒ¼ãƒ«ã®é€Ÿåº¦ã«å€ç‡ã‚’ã‹ã‘ãŸã‚‚ã®ã‚’å‡ºåŠ›
 		rbBall.velocity = toward * rbBall.velocity.magnitude * _addSpeed;
 	}
 }
