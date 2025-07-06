@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7237170723858530388}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 6329158148709259305, guid: fc2b8258796ef9e498807f6a28c34fae, type: 3}
 --- !u!23 &9066626336908010175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 50c5e28f63c92e54cb33ee6eea62842f, type: 2}
+  - {fileID: 2100000, guid: d3f0a80a96fed6a449b7c677321f2a59, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -128,4 +128,4 @@ MonoBehaviour:
   _moneyGetCount: 3
   _getMoney: 1000
   _growthLevelCount: 2
-  _moneyTreeBankroll: {fileID: 1831933760044336166, guid: 0710fa71fdd89514d8c856ae4136b3dd, type: 3}
+  _moneyTreeBankroll: {fileID: 3846717674367794817, guid: 0710fa71fdd89514d8c856ae4136b3dd, type: 3}
