@@ -3141,20 +3141,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollName
-      value: "\u500D\u5316\u30D0\u30F3\u30AF\u30ED\u30FC\u30EB"
+      value: bakudann
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollCount
-      value: 3
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPrefab
       value: 
-      objectReference: {fileID: 2711021454324600581, guid: 5e2fbef1419b47a48bcdd8d94552d3c5, type: 3}
+      objectReference: {fileID: 3142161160885148746, guid: 0c908b874988acf4b9f5ecd54d354d49, type: 3}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPreviewPrefab
       value: 
-      objectReference: {fileID: 2711021454324600581, guid: 5e2fbef1419b47a48bcdd8d94552d3c5, type: 3}
+      objectReference: {fileID: 3142161160885148746, guid: 0c908b874988acf4b9f5ecd54d354d49, type: 3}
     - target: {fileID: 4440546842315981014, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: m_Name
       value: BankrollButtonPrefab (8)
@@ -3254,20 +3254,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollName
-      value: "\u91D1\u306E\u306A\u308B\u82BD"
+      value: "\u30AE\u30E3\u30F3\u30D6\u30EB"
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollCount
-      value: 1
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPrefab
       value: 
-      objectReference: {fileID: 7237170723858530388, guid: 04c6fc077b80b2343b8372fea37033cd, type: 3}
+      objectReference: {fileID: 2454099232944135487, guid: 19c703af7f4ef154da063ef72fd6c867, type: 3}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPreviewPrefab
       value: 
-      objectReference: {fileID: 7237170723858530388, guid: 04c6fc077b80b2343b8372fea37033cd, type: 3}
+      objectReference: {fileID: 2454099232944135487, guid: 19c703af7f4ef154da063ef72fd6c867, type: 3}
     - target: {fileID: 4440546842315981014, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: m_Name
       value: BankrollButtonPrefab (7)
@@ -5390,11 +5390,11 @@ PrefabInstance:
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPrefab
       value: 
-      objectReference: {fileID: 2326792948549959016, guid: 17cdcf051f6ec894cb0dd07910ae2a33, type: 3}
+      objectReference: {fileID: 4884546589028903339, guid: 3f3a855a6061a1e4d8aac31c4b90658e, type: 3}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPreviewPrefab
       value: 
-      objectReference: {fileID: 2326792948549959016, guid: 17cdcf051f6ec894cb0dd07910ae2a33, type: 3}
+      objectReference: {fileID: 4884546589028903339, guid: 3f3a855a6061a1e4d8aac31c4b90658e, type: 3}
     - target: {fileID: 4440546842315981014, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: m_Name
       value: BankrollButtonPrefab (10)
@@ -7031,7 +7031,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6479142273820812282, guid: 08866527712d66e4aa59b562e4340cd7, type: 3}
+      propertyPath: _seSoundDatas.Array.data[1]._volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6479142273820812282, guid: 08866527712d66e4aa59b562e4340cd7, type: 3}
       propertyPath: _seSoundDatas.Array.data[0]._audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f5228fe188f54c4bb4191bf1cd8c364, type: 3}
+    - target: {fileID: 6479142273820812282, guid: 08866527712d66e4aa59b562e4340cd7, type: 3}
+      propertyPath: _seSoundDatas.Array.data[1]._audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 9f5228fe188f54c4bb4191bf1cd8c364, type: 3}
     - target: {fileID: 6599227875665657018, guid: 08866527712d66e4aa59b562e4340cd7, type: 3}
