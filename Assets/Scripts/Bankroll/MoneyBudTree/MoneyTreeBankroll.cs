@@ -23,13 +23,30 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
     [Header("周りをチェックする距離")]
     [SerializeField] private float _rayDistance;
     private int _hitCount = 0;
+    private bool _BreakTree = false;
     private BuildingPlacer _buildingPlacer;
+    private SoundManager _soundManager;
+    private void Awake()
+    {
+        _soundManager = GameObject.FindAnyObjectByType<SoundManager>();
+        _soundManager.PlaySE(SESoundData.SE.BudHenka);
+    }
     public override void OnBankrollHit(GameObject ballObject)
     {
         _hitCount++;
-        if (_hitCount >= _breakCount)
+        if (!_BreakTree)
         {
-            BreakTree();
+
+            if (_hitCount >= _breakCount)
+            {
+                _soundManager.PlaySE(SESoundData.SE.Budbreak);
+                _BreakTree = true;
+                Invoke(nameof(BreakTree), 1.3f);
+            }
+            else
+            {
+                _soundManager.PlaySE(SESoundData.SE.BudGetcoin);
+            }
         }
     }
     private void BreakTree()
@@ -61,7 +78,7 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
             Vector3 force = Vector3.zero;
             do
             {
-            _clonePosition.Rotate(0, Random.Range(10f, 100f), 0);
+                _clonePosition.Rotate(0, Random.Range(10f, 100f), 0);
                 force = _clonePosition.transform.forward;
                 Debug.Log(RayCheck(_clonePosition.transform.forward));
 

@@ -13,6 +13,13 @@ public class MoneyBudBankroll : MoneyGainBankrollBase
     private int _hitCount = 0;
     private int _growthLevel = 0;
     private BuildingPlacer _buildingPlacer;
+    private SoundManager _soundManager;
+
+    private void Awake()
+    {
+        _soundManager = GameObject.FindAnyObjectByType<SoundManager>();
+    }
+
     public override void OnBankrollHit(GameObject ballObject)
     {
         _hitCount++;
@@ -21,11 +28,19 @@ public class MoneyBudBankroll : MoneyGainBankrollBase
             GainMoney(_getMoney);
             _growthLevel++;
             _hitCount = 0;
-
+            
             if (_growthLevel >= _growthLevelCount)
             {
                 GrowingTree();
             }
+            else
+            {
+                _soundManager.PlaySE(SESoundData.SE.Bud10Hit);
+            }
+        }
+        else
+        {
+            _soundManager.PlaySE(SESoundData.SE.BudHit);
         }
 
 

@@ -68,6 +68,11 @@ public class SESoundData
     {
         //ここの部分がラベルになる
         Hit,
+        BudHit,
+        Bud10Hit,
+        BudGetcoin,
+        BudHenka,
+        Budbreak,
         CoinHit,
         CoinOK,
         Coinfail,
