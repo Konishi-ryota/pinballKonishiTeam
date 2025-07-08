@@ -69,6 +69,18 @@ public class BuildingPlacer : MonoBehaviour
                         UseMoney(buildCost);
                         //設置できる数を減らす処理
                         _bankrollButton.DecreaseCount();
+                        //  ここでIdleアニメーションを再生
+                        Animator animator = gameObject.GetComponent<Animator>();
+                        if (animator != null)
+                        {
+                            animator.SetBool("Set", true);
+                            Debug.Log(" Animator取得成功・Set = true を設定しました");
+                            Debug.Log(" Runtime Controller: " + animator.runtimeAnimatorController.name);
+                        }
+                        else
+                        {
+                            Debug.LogWarning(" Animator が取得できませんでした！");
+                        }
                     }
                 }
                 else

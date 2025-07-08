@@ -128,4 +128,4 @@ MonoBehaviour:
   _moneyGetCount: 3
   _getMoney: 1000
   _growthLevelCount: 2
-  _moneyTreeBankroll: {fileID: 3846717674367794817, guid: 0710fa71fdd89514d8c856ae4136b3dd, type: 3}
+  _moneyTreeBankroll: {fileID: 2833705457013218518, guid: f3aa897a10eb4f141a9788f16a4244be, type: 3}

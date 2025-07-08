@@ -551,12 +551,12 @@ MonoBehaviour:
   _defultBankrollPrefab: {fileID: 5906569327928994909, guid: f38566aa0194ee04db9cadf5141883d6, type: 3}
   _bankrollParentName: BankrollParent
   _defultBankrollPrefabName: DefultBankroll
-  _moneyBudBankroll: {fileID: 7237170723858530388, guid: 04c6fc077b80b2343b8372fea37033cd, type: 3}
+  _moneyBudBankroll: {fileID: 5155716205854183440, guid: 8dac608480b715e4993c09da02acc307, type: 3}
   _breakCount: 1
   _brakeGetMoney: 25000
   _coinPrefab: {fileID: 7129501776429702102, guid: d2804291934d23c4698e4570dd8f2513, type: 3}
   _coinScatterCounts: 10
-  _scatteredPower: 4
+  _scatteredPower: 5
   _clonePosition: {fileID: 8456801842625413430}
   _rayDistance: 0
 --- !u!1 &4142382990820573898
