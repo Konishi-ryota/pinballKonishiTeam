@@ -45,7 +45,7 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
             }
             else
             {
-                _soundManager.PlaySE(SESoundData.SE.BudGetcoin);
+                _soundManager.PlaySE(SESoundData.SE.BudHit);
             }
         }
     }
@@ -56,6 +56,7 @@ public class MoneyTreeBankroll : MoneyGainBankrollBase
             Debug.LogError("_moneyBudBankroll Null");
             return;
         }
+        _soundManager.PlaySE(SESoundData.SE.BudGetcoin);
         GameObject newBankroll = Instantiate(_moneyBudBankroll);
         newBankroll.transform.position = this.transform.position;
         newBankroll.transform.rotation = this.transform.rotation;
