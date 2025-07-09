@@ -78,7 +78,8 @@ public class SESoundData
         Coinfail,
         DiceHit,
         DiceRoll,
-        Dice1
+        Dice1,
+        Dice6
     }
 
     public SE _se;

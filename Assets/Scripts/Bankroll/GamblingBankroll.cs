@@ -5,8 +5,6 @@ public class GamblingBankroll : BankrollBase
 {
     //コインピンに当たった回数（10回で進化）
     private int _coinPinHitCount = 0;
-    //サイコロの出目（1～6）
-    private int _rolledDiceNumber = 0;
     //出目に応じた倍率（例：1→0.7）
     [Header("コインを振った時にもらえる増減コイン")]
     [SerializeField] private float[] _moneyMultiplierFromDice = { 0.7f, 0.8f, 1.0f, 1.2f, 1.5f, 2.0f };
@@ -31,8 +29,13 @@ public class GamblingBankroll : BankrollBase
     [SerializeField] private Material CoinMaterial;
     [Header("ダイスピンのマテリアル")]
     [SerializeField] private Material DiceMaterial;
+    [Header("コインピンのanimtorController")]
+    [SerializeField] private RuntimeAnimatorController CoinController;
+    [Header("ダイスピンのanimtorController")]
+    [SerializeField] private RuntimeAnimatorController DiceController;
     [SerializeField] Text text;
     [SerializeField] Text hitormiss;
+    private int _DicedNumber;
     //[SerializeField] UnderPinUI _underHeadMsgPrefab;
     //UnderPinUI _underPinMsg;
 
@@ -77,7 +80,7 @@ public class GamblingBankroll : BankrollBase
                 _moneyManager.DecreaseMoney(_getCoin);
                 Debug.Log($"{_getCoin}�~�������B");
                 //�͂���̃e�L�X�g��\��
-                hitormiss.gameObject.SetActive(true );
+                hitormiss.gameObject.SetActive(true);
                 hitormiss.text = "はずれ";
                 _soundManager.PlaySE(SESoundData.SE.Coinfail);
             }
@@ -90,7 +93,7 @@ public class GamblingBankroll : BankrollBase
 
                 hitormiss.gameObject.SetActive(true);
                 hitormiss.text = "当たり";
-                 _soundManager.PlaySE(SESoundData.SE.CoinOK);
+                _soundManager.PlaySE(SESoundData.SE.CoinOK);
             }
 
             if (_coinPinHitCount == _diceChangeCount)
@@ -101,26 +104,64 @@ public class GamblingBankroll : BankrollBase
                 text.gameObject.SetActive(false);
                 //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
                 //GetComponent<Renderer>().material.color = Color.red;
-                GetComponent<MeshFilter>().mesh = DiceMesh;
-                GetComponent<Renderer>().material = DiceMaterial;
+                transform.GetChild(0).localRotation = Quaternion.Euler(-40, 0, 0);//DiceRotaionのローテーションを変更。
+                transform.GetChild(0).GetChild(0).GetComponent<MeshFilter>().mesh = DiceMesh;
+                transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material = DiceMaterial;
+                transform.GetChild(0).GetChild(0).GetComponent<Animator>().runtimeAnimatorController = DiceController;
+                //GetComponent<MeshFilter>().mesh = DiceMesh;;
+                //GetComponent<Renderer>().material = DiceMaterial;
                 _coinPinHitCount = 0;
             }
         }
         //ダイスに当たったらの処理
         else
         {
-            int _rolledDiceNumber = Random.Range(0, _moneyMultiplierFromDice.Length);
-            Debug.Log(_rolledDiceNumber+1 + "が出た");
+            _soundManager.PlaySE(SESoundData.SE.DiceRoll);
+            Debug.Log(_moneyMultiplierFromDice.Length);
 
-            _moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[_rolledDiceNumber]);
-            state= GamblePinState.Coin;
+            //Debug.Log("ダイスの"+_rolledDiceNumber +1 + "が出た");
+            _DicedNumber = Random.Range(0, _moneyMultiplierFromDice.Length);
+            DiceRoll(_DicedNumber);
+            Invoke(nameof(Chenge), 2f);
+
+            /*_moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[_rolledDiceNumber]);
+            state = GamblePinState.Coin;
             //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
             //GetComponent<Renderer>().material.color = Color.blue;
-            GetComponent<MeshFilter>().mesh = CoinMesh;
-            GetComponent<Renderer>().material = CoinMaterial;
-            _soundManager.PlaySE(SESoundData.SE.DiceRoll);
+            transform.GetChild(0).localRotation = Quaternion.Euler(30, 0, 0);//DiceRotaionのローテーションを変更。
+            transform.GetChild(0).GetChild(0).GetComponent<MeshFilter>().mesh = CoinMesh;
+            transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material = CoinMaterial;
+            transform.GetChild(0).GetChild(0).GetComponent<Animator>().runtimeAnimatorController = CoinController;
+            //GetComponent<Renderer>().material = CoinMaterial;*/
 
         }
+    }
+    private void DiceRoll(int rolledDiceNumber)
+    {
+        
+            transform.GetChild(0).GetChild(0).GetComponent<Animator>().SetInteger("DiceNumber", rolledDiceNumber+1);
+        
+       
+        _moneyManager.MultiplicationMoney(_moneyMultiplierFromDice[rolledDiceNumber]);
+        state = GamblePinState.Coin;
+        //デバック用にわかりやすくしているだけなので、prefab入れたらコメントアウトしてくれて大丈夫
+        //GetComponent<Renderer>().material.color = Color.blue;
+        //GetComponent<Renderer>().material = CoinMaterial;
+    }
+    private void Chenge()
+    {
+        if (_DicedNumber == 0)
+        {
+            _soundManager.PlaySE(SESoundData.SE.Dice1);
+        }
+        if (_DicedNumber == 5)
+        {
+            _soundManager.PlaySE(SESoundData.SE.Dice6);
+        }
+        transform.GetChild(0).GetChild(0).GetComponent<Animator>().runtimeAnimatorController = CoinController;
+        transform.GetChild(0).localRotation = Quaternion.Euler(30, 0, 0);//DiceRotaionのローテーションを変更。
+        transform.GetChild(0).GetChild(0).GetComponent<MeshFilter>().mesh = CoinMesh;
+        transform.GetChild(0).GetChild(0).GetComponent<Renderer>().material = CoinMaterial;
     }
 
 }

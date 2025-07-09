@@ -256,6 +256,8 @@ MonoBehaviour:
   DiceMesh: {fileID: -7983736602715254465, guid: 561612a16cc391e458cba1290b5a6a24, type: 3}
   CoinMaterial: {fileID: 2100000, guid: 613c4a17a6a67e8458a7bbcae486f721, type: 2}
   DiceMaterial: {fileID: 2100000, guid: 6a822ef19072e124eae3679e2f67d3b6, type: 2}
+  CoinController: {fileID: 0}
+  DiceController: {fileID: 0}
   text: {fileID: 687317746387081505}
   hitormiss: {fileID: 5920015534690679764}
   state: 0
@@ -358,7 +360,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 1
 --- !u!1 &7204319262815000243
 GameObject:
   m_ObjectHideFlags: 0
@@ -437,4 +439,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: "\u306F\u305A\u308C"
