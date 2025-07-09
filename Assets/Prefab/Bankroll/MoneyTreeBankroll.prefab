@@ -552,7 +552,7 @@ MonoBehaviour:
   _bankrollParentName: BankrollParent
   _defultBankrollPrefabName: DefultBankroll
   _moneyBudBankroll: {fileID: 5155716205854183440, guid: 8dac608480b715e4993c09da02acc307, type: 3}
-  _breakCount: 1
+  _breakCount: 2
   _brakeGetMoney: 25000
   _coinPrefab: {fileID: 7129501776429702102, guid: d2804291934d23c4698e4570dd8f2513, type: 3}
   _coinScatterCounts: 10
