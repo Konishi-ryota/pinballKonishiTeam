@@ -62,10 +62,11 @@ public class FieldControl : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bankroll") && other.gameObject.GetComponent<MoneyGainBankrollBase>() != null)
         {
-            
+
         }
-        Debug.Log(other.gameObject);
-        if (other.gameObject.GetComponent<GrowthBankroll>() != null && other.gameObject.GetComponent<FieldHitCheck>() == null)
+        GameObject hitObject = other.gameObject;
+        bool isTargetBankroll = hitObject.GetComponent<GrowthBankroll>() != null || hitObject.GetComponent<MoneyTreeBankroll>() != null || hitObject.GetComponent<MoneyBudBankroll>() != null;
+        if (isTargetBankroll && other.gameObject.GetComponent<FieldHitCheck>() == null)
         {
             other.gameObject.AddComponent<FieldHitCheck>().fieldObject = this.gameObject;
 

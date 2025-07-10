@@ -33,6 +33,7 @@ public class MoneyManager : MonoBehaviour
     /// <param name="money">増やす量</param>
     public void AddMoney(int money)
     {
+        Debug.Log("+" + money);
         _money += money;
         SetMoneyText();
     }
