@@ -725,6 +725,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollName
+      value: "\u8EE2\u9001\u83C5"
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollCount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollPrefab
+      value: 
+      objectReference: {fileID: 2958096146393889712, guid: c514f2b3ba35ce248a8a46a4427ab5c5, type: 3}
+    - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
+      propertyPath: _bankrollPreviewPrefab
+      value: 
+      objectReference: {fileID: 2958096146393889712, guid: c514f2b3ba35ce248a8a46a4427ab5c5, type: 3}
     - target: {fileID: 4440546842315981014, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: m_Name
       value: BankrollButtonPrefab (9)
@@ -5073,6 +5089,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8588928286056020293, guid: f38566aa0194ee04db9cadf5141883d6, type: 3}
   m_PrefabInstance: {fileID: 1494277021}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1538168658
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1445913580803059286, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_Name
+      value: WormHoleManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.2735844
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.7154727
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.8432021
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2999172427397410425, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc73b3ed2224f8e46a0cbf315d20031f, type: 3}
 --- !u!1 &1545774022
 GameObject:
   m_ObjectHideFlags: 0
@@ -6222,7 +6295,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 119928189}
   m_HandleRect: {fileID: 119928188}
   m_Direction: 2
-  m_Value: 0.9999987
+  m_Value: 0.99999905
   m_Size: 0.63106793
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -7187,3 +7260,4 @@ SceneRoots:
   - {fileID: 246791524}
   - {fileID: 3725172172196298206}
   - {fileID: 1734796213}
+  - {fileID: 1538168658}
