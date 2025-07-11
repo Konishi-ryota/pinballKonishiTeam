@@ -12,6 +12,7 @@ public class WormholeBankroll : BankrollBase
     private MoneyManager _moneyManager;
     private WormholeManager _wormholeManager;
     private Rigidbody rb = null;
+    private SoundManager _soundManager = null;
     private List<WormholeBankroll> otherWormhole = new();
 
     // Start is called before the first frame update
@@ -19,6 +20,7 @@ public class WormholeBankroll : BankrollBase
     {
         _wormholeManager = FindAnyObjectByType<WormholeManager>();
         _moneyManager = FindAnyObjectByType<MoneyManager>();
+        _soundManager = FindAnyObjectByType<SoundManager>();
         _wormholeManager.BankrollList.Add(this);
         otherWormhole = _wormholeManager.BankrollList;
     }
@@ -77,7 +79,6 @@ public class WormholeBankroll : BankrollBase
     private void ExistBall(GameObject ball)
     {
         SetBallVisible(ball, true);
-        Rigidbody rb = ball.GetComponent<Rigidbody>();
         if (rb != null)
         {
             Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
