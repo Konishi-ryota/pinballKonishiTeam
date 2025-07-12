@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Profiling;
 
-public class WormholeBankroll : BankrollBase
+public class WormholeBankroll : BankrollBase, IPlaceCallBack
 {
     [Header("飛ばす力の強さ"),SerializeField]float forceMagnitude = 1f;
     [Header("ボールが出てくるまでの時間"), SerializeField] float _delayTime;
@@ -17,20 +17,27 @@ public class WormholeBankroll : BankrollBase
     void Start()
     {
         _wormholeManager = FindAnyObjectByType<WormholeManager>();
-        _soundManager = FindAnyObjectByType<SoundManager>();
         _wormholeManager.BankrollList.Add(this);
-        _soundManager.PlaySE(SESoundData.SE.WarpSet);
         otherWormhole = _wormholeManager.BankrollList;
     }
+
     public override void OnBankrollEffect(GameObject ballObject)
     {
-
+        
     }
+    public void OnPlaced()
+    {
+        _soundManager = FindAnyObjectByType<SoundManager>();
+        Debug.Log("置かれた");
+        _soundManager.PlaySE(SESoundData.SE.WarpSet);
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ball"))
         {
+            _soundManager = FindAnyObjectByType<SoundManager>();
             GameObject ball = other.gameObject;
             SetBallVisible(ball, false);
             otherWormhole.Remove(this); // 一時的に除外
@@ -83,6 +90,7 @@ public class WormholeBankroll : BankrollBase
         if (rb != null)
         {
             Vector3 randomDir = new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f)).normalized;
+            Debug.Log($"{randomDir}");
             rb.AddForce(randomDir * forceMagnitude * 500);
         }
     }
