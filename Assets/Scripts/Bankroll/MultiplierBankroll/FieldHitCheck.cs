@@ -5,10 +5,12 @@ using UnityEngine;
 public class FieldHitCheck : MonoBehaviour
 {
     public GameObject fieldObject;
+    private SoundManager _soundManager;
     // Start is called before the first frame update
     void Start()
     {
         this.gameObject.GetComponent<MoneyGainBankrollBase>().SetMoneyMultiplier(2);//î{ó¶ÇÇQî{Ç…ïœçX
+        _soundManager = FindAnyObjectByType<SoundManager>();
     }
 
     // Update is called once per frame
@@ -20,6 +22,7 @@ public class FieldHitCheck : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ball") && fieldObject != null)
         {
+            _soundManager.PlaySE(SESoundData.SE.BaikaCoin);
             fieldObject.GetComponent<FieldControl>().Delete();
         }
     }  

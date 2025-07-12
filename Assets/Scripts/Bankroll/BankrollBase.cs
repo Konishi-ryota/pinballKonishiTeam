@@ -43,7 +43,7 @@ public abstract class BankrollBase : MonoBehaviour
             //１度当たったらデフォルトのバンクロールに変更
             if (_isOneTimeOnly)
             {
-                Instantiate(_defultBankrollPrefab, this.transform.position, this.transform.rotation, _bankrollParent.transform);
+                Instantiate(_defultBankrollPrefab, this.transform.position, this.transform.rotation, this.transform.parent.gameObject.transform);
                 Destroy(this.gameObject);
             }
         }

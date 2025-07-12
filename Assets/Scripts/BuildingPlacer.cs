@@ -22,13 +22,14 @@ public class BuildingPlacer : MonoBehaviour
     private PlungerTrigger _plungerTrigger;
     private WarningUI _warningUI;
     private MoneyManager _moneyManager;
-
+    private SoundManager _soundManager;
 
     private void Awake()
     {
         _plungerTrigger = FindObjectOfType<PlungerTrigger>();
         _warningUI = FindObjectOfType<WarningUI>();
         _moneyManager = FindObjectOfType<MoneyManager>();
+        _soundManager = FindObjectOfType<SoundManager>();
     }
     
     private void Update()
@@ -71,6 +72,12 @@ public class BuildingPlacer : MonoBehaviour
                         _bankrollButton.DecreaseCount();
                         //  ここでIdleアニメーションを再生
                         Animator animator = gameObject.GetComponent<Animator>();
+                        //サウンド
+                        if(gameObject.GetComponent<MultiplierBankroll>() != null)
+                        {
+                            _soundManager.PlaySE(SESoundData.SE.BaikaSet);
+                        }
+
                         if (animator != null)
                         {
                             animator.SetBool("Set", true);

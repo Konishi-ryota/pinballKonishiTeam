@@ -39,6 +39,7 @@ public class SoundManager : MonoBehaviour
 
     public void PlaySE(SESoundData.SE se)
     {
+        Debug.Log(se);
         SESoundData data = _seSoundDatas.Find(data => data._se == se);
         _seAudioSource.volume = data._volume * _seMasterVolume * _masterVolume;
         _seAudioSource.PlayOneShot(data._audioClip);
@@ -79,7 +80,10 @@ public class SESoundData
         DiceHit,
         DiceRoll,
         Dice1,
-        Dice6
+        Dice6,
+        BaikaSet,
+        BaikaHatudou,
+        BaikaCoin
     }
 
     public SE _se;
