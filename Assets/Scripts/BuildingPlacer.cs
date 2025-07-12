@@ -69,6 +69,10 @@ public class BuildingPlacer : MonoBehaviour
                         UseMoney(buildCost);
                         //設置できる数を減らす処理
                         _bankrollButton.DecreaseCount();
+                        if (bankrollBase is IPlaceCallBack callbackBase)
+                        {
+                            callbackBase.OnPlaced();
+                        }
                     }
                 }
                 else
