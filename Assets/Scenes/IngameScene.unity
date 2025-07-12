@@ -736,11 +736,11 @@ PrefabInstance:
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPrefab
       value: 
-      objectReference: {fileID: 3014238554251691306, guid: 0bfa497ba51776340bf53855fb2b41ea, type: 3}
+      objectReference: {fileID: 6306048607053255450, guid: 0bfa497ba51776340bf53855fb2b41ea, type: 3}
     - target: {fileID: 2909140760100545099, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: _bankrollPreviewPrefab
       value: 
-      objectReference: {fileID: 3014238554251691306, guid: 0bfa497ba51776340bf53855fb2b41ea, type: 3}
+      objectReference: {fileID: 6306048607053255450, guid: 0bfa497ba51776340bf53855fb2b41ea, type: 3}
     - target: {fileID: 4440546842315981014, guid: 41aa75241b8c9c0479da5b52e20c89c9, type: 3}
       propertyPath: m_Name
       value: BankrollButtonPrefab (9)
