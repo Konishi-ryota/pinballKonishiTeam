@@ -22,9 +22,9 @@ public class ReflectionBankroll : BankrollBase
 	{
 		//変更する方向を格納
 		Vector3 toward = Vector3.zero;
-
 		//方向の変更と速度の抽出
 		Rigidbody rbBall = ballObject.GetComponent<Rigidbody>();
+
 		//ボールとピンの2点間の距離を出す
 		Vector3 contactVec = ballObject.transform.position - this.transform.position;
 		//高さを揃えるため、Y座標を0にする(Y座標の差をなくす)
@@ -32,17 +32,15 @@ public class ReflectionBankroll : BankrollBase
 		//ピンのZ軸(0,0,1)とのなす角を出す
 		float betweenAngle = Vector3.Angle(Vector3.forward, contactVec.normalized);
 
-		Debug.Log(betweenAngle);
-
 		//上下判定(デフォルト±30°)
 		if (betweenAngle <= _angleUprRange) 
 		{
-			Debug.Log("上判定");
+			Debug.Log($"上判定：{betweenAngle}");
 			toward = Vector3.left;
 		}
 		else if (betweenAngle >= _angleLwrRange) 
 		{
-			Debug.Log("下判定");
+			Debug.Log($"下判定：{betweenAngle}");
 			toward = Vector3.right;
 		}
 
@@ -51,12 +49,12 @@ public class ReflectionBankroll : BankrollBase
 		{
 			if (contactVec.x < 0)
 			{
-				Debug.Log("左判定");
+				Debug.Log($"左判定：{betweenAngle}");
 				toward = -(Vector3.forward);
 			}
 			else if (contactVec.x > 0)
 			{
-				Debug.Log("右判定");
+				Debug.Log($"右判定：{betweenAngle}");
 				toward = Vector3.forward;
 			}
 			else 
